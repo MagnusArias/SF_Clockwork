@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.button-off {
+    background-color: lightgrey;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    margin: 10px 35px;
+    text-align: center;
+    font-size: 16px;
+}
+
+    .button-off:hover {
+        background-color: seagreen;
+    }
+
+.button-on {
+    background-color: yellow;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    margin: 10px 35px;
+    text-align: center;
+    font-size: 16px;
+}
+
+    .button-on:hover {
+        background-color: lightgreen;
+    }
+
+.button-next {
+    background-color: skyblue;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    margin: 10px 35px;
+    text-align: center;
+    font-size: 16px;
+}

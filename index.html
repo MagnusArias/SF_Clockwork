@@ -1,43 +1,30 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Spellforce - Apka do latarnii</title>
 
-    <style type="text/css">
-        body {
-            margin: 0;
-            height: 100%;
-        }
-
-        .buttonoff {
-            background-color: lightgrey;
-            border: 2px solid #000000;
-            padding: 10px 20px;
-            margin: 10px 35px;
-            text-align: center;
-            font-size: 16px;
-        }
-
-            .buttonoff:hover {
-                background-color: seagreen;
-            }
-
-        .buttonon {
-            background-color: yellow;
-            border: 2px solid #000000;
-            padding: 10px 20px;
-            margin: 10px 35px;
-            text-align: center;
-            font-size: 16px;
-        }
-
-            .buttonon:hover {
-                background-color: lightgreen;
-            }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
     <script type="text/javascript">
+        var states = new Array();
+
+        window.onload = function () {
+            var input = window.prompt("Ktore latarnie maja sie swiecic? Format CSV (,)", "1,7");
+            var evt = input.split(",");
+
+            for (var c = 0; c < 8; c++) {
+                states[c] = "button-off";
+                var button = document.getElementById("btn" + evt[i]);
+            }
+
+            for (var i = 0; i < evt.length; i++) {
+                var button = document.getElementById("btn" + evt[i]);
+                states[evt[i]] = "button-on";
+                button.className = "button-on";
+
+            }
+        }
 
         function showMessage(message, style) {
             var messages = document.getElementById("message");
@@ -60,10 +47,10 @@
         function change(butNum) {
             var button = document.getElementById("btn" + butNum);
 
-            if (button.className == "buttonon") {
-                button.className = "buttonoff"
+            if (button.className == "button-on") {
+                button.className = "button-off"
             }
-            else button.className = "buttonon"
+            else button.className = "button-on"
         }
 
         function clickBtn(me, btn1, btn2) {
@@ -73,23 +60,47 @@
             buttons[2] = document.getElementById("btn" + btn2);
 
             for (var i = 0; i < buttons.length; i++) {
-                if (buttons[i].className == "buttonon") {
-                    buttons[i].className = "buttonoff"
+                if (buttons[i].className == "button-on") {
+                    buttons[i].className = "button-off"
                 }
-                else buttons[i].className = "buttonon"
+                else buttons[i].className = "button-on"
             }
             showMessage(" " + me, "color: black");
 
+        }
+
+        
+
+        function mouseEnter(btn1, btn2) {
+            
+            b1 = document.getElementById("btn" + btn1);
+            b2 = document.getElementById("btn" + btn2);
+            states[btn1] = b1.className;
+            states[btn2] = b2.className;
+            console.log("enter " + btn1 + "-"+ btn2 + " " +states);
+
+            b1.className = "button-next";
+            b2.className = "button-next";
+        }
+
+        function mouseOut(btn1, btn2) {
+            console.log("aut");
+            b1 = document.getElementById("btn" + btn1);
+            b2 = document.getElementById("btn" + btn2);
+            console.log(states);
+            b1.className = states[0];
+            b2.className = states[1];
         }
     </script>
 
 </head>
 <body>
+
     <div align="left"><font id="message" size="6" style="color: black">Kombinacja: </font></div>
     <div align="center">
-        <button class="buttonon" id="btn1" onClick="clickBtn(1, 5, 7);">&nbsp;</button>
+        <button class="buttonoff" id="btn1" onmouseenter="mouseEnter(5, 7)" onmouseout="mouseOut(5, 7)" onClick="clickBtn(1, 5, 7);">&nbsp;</button>
         <br>
-        <button class="buttonoff" id="btn2" onClick="clickBtn(2, 1, 4);">&nbsp;</button>
+        <button class="buttonoff" id="btn2" onmouseenter="mouseEnter(1, 4)" onmouseout="mouseOut(1, 4)" onClick="clickBtn(2, 1, 4);">&nbsp;</button>
         <button class="buttonoff" id="btn3" onClick="clickBtn(3, 2, 6);">&nbsp;</button>
         <br>
         <button class="buttonoff" id="btn4" onClick="clickBtn(4, 1, 6);">&nbsp;</button>
@@ -97,7 +108,7 @@
         <button class="buttonoff" id="btn5" onClick="clickBtn(5, 4, 7);">&nbsp;</button>
         <button class="buttonoff" id="btn6" onClick="clickBtn(6, 3, 5);">&nbsp;</button>
         <br>
-        <button class="buttonon" id="btn7" onClick="clickBtn(7, 2, 3);">&nbsp;</button>
+        <button class="buttonoff" id="btn7" onClick="clickBtn(7, 2, 3);">&nbsp;</button>
     </div>
 
 </body>

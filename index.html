@@ -13,70 +13,31 @@
         .buttonoff {
             background-color: lightgrey;
             border: 2px solid #000000;
-            padding: 15px 25px;
+            padding: 10px 20px;
+            margin: 10px 35px;
             text-align: center;
             font-size: 16px;
         }
+
+            .buttonoff:hover {
+                background-color: seagreen;
+            }
 
         .buttonon {
             background-color: yellow;
             border: 2px solid #000000;
-            padding: 15px 25px;
+            padding: 10px 20px;
+            margin: 10px 35px;
             text-align: center;
             font-size: 16px;
         }
+
+            .buttonon:hover {
+                background-color: lightgreen;
+            }
     </style>
 
     <script type="text/javascript">
-
-        var state = {
-            OFF: "&nbsp;",
-            ON: "X"
-        };
-
-
-        function click_button1() {
-            showMessage(" 1", "color: black");
-            change(1);
-            change(5);
-            change(7);
-        }
-        function click_button2() {
-            showMessage(" 2", "color: black");
-            change(2);
-            change(1);
-            change(4);
-        }
-        function click_button3() {
-            showMessage(" 3", "color: black");
-            change(3);
-            change(2);
-            change(6);
-        }
-        function click_button4() {
-            showMessage(" 4", "color: black");
-            change(4);
-            change(1);
-            change(6);
-        }
-        function click_button5() {
-            showMessage(" 5", "color: black");
-            change(5);
-            change(4);
-            change(7);
-        }
-        function click_button6() {
-            showMessage(" 6", "color: black");
-            change(6);
-            change(3);
-            change(5);
-        }
-        function click_button7() {
-            showMessage(" 7", "color: black");
-            change(7);
-            change(2);
-            change(3);
-        }
 
         function showMessage(message, style) {
             var messages = document.getElementById("message");
@@ -84,7 +45,17 @@
             if (style) {
                 messages.style = style;
             }
-        }
+        }
+
+        function hover(self, butNum1, butNum2) {
+            var b1 = document.getElementById("btn" + self);
+            var b2 = document.getElementById("btn" + butNum1);
+            var b3 = document.getElementById("btn" + butNum2);
+
+            b1.className = "buttonhover";
+            b2.className = "buttonhover";
+            b3.className = "buttonhover";
+        }
 
         function change(butNum) {
             var button = document.getElementById("btn" + butNum);
@@ -94,24 +65,40 @@
             }
             else button.className = "buttonon"
         }
+
+        function clickBtn(me, btn1, btn2) {
+            var buttons = new Array();
+            buttons[0] = document.getElementById("btn" + me);
+            buttons[1] = document.getElementById("btn" + btn1);
+            buttons[2] = document.getElementById("btn" + btn2);
+
+            for (var i = 0; i < buttons.length; i++) {
+                if (buttons[i].className == "buttonon") {
+                    buttons[i].className = "buttonoff"
+                }
+                else buttons[i].className = "buttonon"
+            }
+            showMessage(" " + me, "color: black");
+
+        }
     </script>
 
 </head>
 <body>
-    <div align="center"><font id="message" size="6" style="color: black">&nbsp;</font></div>
+    <div align="left"><font id="message" size="6" style="color: black">Kombinacja: </font></div>
     <div align="center">
-        <button class="buttonon" id="btn1" onClick="click_button1();">&nbsp;</button>
+        <button class="buttonon" id="btn1" onClick="clickBtn(1, 5, 7);">&nbsp;</button>
         <br>
-        <button class="buttonoff" id="btn2" onClick="click_button2();">&nbsp;</button>
-        <button class="buttonoff" id="btn3" onClick="click_button3();">&nbsp;</button>
+        <button class="buttonoff" id="btn2" onClick="clickBtn(2, 1, 4);">&nbsp;</button>
+        <button class="buttonoff" id="btn3" onClick="clickBtn(3, 2, 6);">&nbsp;</button>
         <br>
-        <button class="buttonoff" id="btn4" onClick="click_button4();">&nbsp;</button>
+        <button class="buttonoff" id="btn4" onClick="clickBtn(4, 1, 6);">&nbsp;</button>
         <br>
-        <button class="buttonoff" id="btn5" onClick="click_button5();">&nbsp;</button>
-        <button class="buttonoff" id="btn6" onClick="click_button6();">&nbsp;</button>
+        <button class="buttonoff" id="btn5" onClick="clickBtn(5, 4, 7);">&nbsp;</button>
+        <button class="buttonoff" id="btn6" onClick="clickBtn(6, 3, 5);">&nbsp;</button>
         <br>
-        <button class="buttonon" id="btn7" onClick="click_button7();">&nbsp;</button>
+        <button class="buttonon" id="btn7" onClick="clickBtn(7, 2, 3);">&nbsp;</button>
     </div>
-    
+
 </body>
 </html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spellforce - Apka do latarnii</title>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+			 var state = {
+				OFF : "&nbsp;",
+				ON : "X"
+			};
+
+			function click_button1()
+			{
+				change(1);
+				change(5);
+				change(7);
+			}
+			function click_button2()
+			{
+				change(2);
+				change(1);
+				change(4);
+			}
+			function click_button3()
+			{
+				change(3);
+				change(2);
+				change(6);
+			}
+			function click_button4()
+			{
+				change(4);
+				change(1);
+				change(6);
+			}
+			function click_button5()
+			{
+				change(5);
+				change(4);
+				change(7);
+			}
+			function click_button6()
+			{
+				change(6);
+				change(3);
+				change(5);
+			}
+			function click_button7()
+			{
+				change(7);
+				change(2);
+				change(3);
+			}
+
+			function change(butNum)
+			{
+				var button = document.getElementById("btn" + butNum);
+				if (button.innerHTML.includes(state.ON)){
+					button.innerHTML = state.OFF;
+				}
+				else button.innerHTML = state.ON
+			}
+    </script>
+
+</head>
+<body>
+    <div align="center">
+        <button type="button" id="btn1" onClick="click_button1();">X</button>
+        <br>
+        <button type="button" id="btn2" onClick="click_button2();">&nbsp;</button>
+        <button type="button" id="btn3" onClick="click_button3();">&nbsp;</button>
+        <br>
+        <button type="button" id="btn4" onClick="click_button4();">&nbsp;</button>
+        <br>
+        <button type="button" id="btn5" onClick="click_button5();">&nbsp;</button>
+        <button type="button" id="btn6" onClick="click_button6();">&nbsp;</button>
+        <br>
+        <button type="button" id="btn7" onClick="click_button7();">X</button>
+    </div>
+</body>
+</html>

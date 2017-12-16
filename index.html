@@ -63,33 +63,30 @@
                 if (buttons[i].className == "button-on") {
                     buttons[i].className = "button-off"
                 }
-                else buttons[i].className = "button-on"
+                else if (buttons[i].className == "button-off") {
+                    buttons[i].className = "button-on";
+                }
             }
             showMessage(" " + me, "color: black");
 
         }
 
-        
-
         function mouseEnter(btn1, btn2) {
-            
             b1 = document.getElementById("btn" + btn1);
             b2 = document.getElementById("btn" + btn2);
+
             states[btn1] = b1.className;
             states[btn2] = b2.className;
-            console.log("enter " + btn1 + "-"+ btn2 + " " +states);
 
             b1.className = "button-next";
             b2.className = "button-next";
         }
 
         function mouseOut(btn1, btn2) {
-            console.log("aut");
             b1 = document.getElementById("btn" + btn1);
             b2 = document.getElementById("btn" + btn2);
-            console.log(states);
-            b1.className = states[0];
-            b2.className = states[1];
+            b1.className = states[btn1];
+            b2.className = states[btn2];
         }
     </script>
 
@@ -98,17 +95,17 @@
 
     <div align="left"><font id="message" size="6" style="color: black">Kombinacja: </font></div>
     <div align="center">
-        <button class="buttonoff" id="btn1" onmouseenter="mouseEnter(5, 7)" onmouseout="mouseOut(5, 7)" onClick="clickBtn(1, 5, 7);">&nbsp;</button>
+        <button class="button-off" id="btn1" onmouseenter="mouseEnter(5, 7)" onmouseout="mouseOut(5, 7)" onClick="clickBtn(1, 5, 7);">&nbsp;</button>
         <br>
-        <button class="buttonoff" id="btn2" onmouseenter="mouseEnter(1, 4)" onmouseout="mouseOut(1, 4)" onClick="clickBtn(2, 1, 4);">&nbsp;</button>
-        <button class="buttonoff" id="btn3" onClick="clickBtn(3, 2, 6);">&nbsp;</button>
+        <button class="button-off" id="btn2" onmouseenter="mouseEnter(1, 4)" onmouseout="mouseOut(1, 4)" onClick="clickBtn(2, 1, 4);">&nbsp;</button>
+        <button class="button-off" id="btn3" onmouseenter="mouseEnter(2, 6)" onmouseout="mouseOut(2, 6)" onClick="clickBtn(3, 2, 6);">&nbsp;</button>
         <br>
-        <button class="buttonoff" id="btn4" onClick="clickBtn(4, 1, 6);">&nbsp;</button>
+        <button class="button-off" id="btn4" onmouseenter="mouseEnter(1, 6)" onmouseout="mouseOut(1, 6)" onClick="clickBtn(4, 1, 6);">&nbsp;</button>
         <br>
-        <button class="buttonoff" id="btn5" onClick="clickBtn(5, 4, 7);">&nbsp;</button>
-        <button class="buttonoff" id="btn6" onClick="clickBtn(6, 3, 5);">&nbsp;</button>
+        <button class="button-off" id="btn5" onmouseenter="mouseEnter(4, 7)" onmouseout="mouseOut(4, 7)" onClick="clickBtn(5, 4, 7);">&nbsp;</button>
+        <button class="button-off" id="btn6" onmouseenter="mouseEnter(3, 5)" onmouseout="mouseOut(3, 5)" onClick="clickBtn(6, 3, 5);">&nbsp;</button>
         <br>
-        <button class="buttonoff" id="btn7" onClick="clickBtn(7, 2, 3);">&nbsp;</button>
+        <button class="button-off" id="btn7" onmouseenter="mouseEnter(2, 3)" onmouseout="mouseOut(2, 3)" onClick="clickBtn(7, 2, 3);">&nbsp;</button>
     </div>
 
 </body>
